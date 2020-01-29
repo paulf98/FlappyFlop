@@ -12,7 +12,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.opengl.GLSurfaceView;
 import android.opengl.GLU;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.widget.Toast;
@@ -48,12 +47,8 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
         setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);
     }
 
-    // called from sensor
-    public void setShipVelocity(float vx, float vy, float vz) {
-        ship.setVelocity(vx, vy, vz);
-    }
-
     @Override
+    //Wenn Benutzer auf den Bildschirm drückt, fliegt das Schiff nach oben
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction() & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_DOWN:
@@ -124,6 +119,8 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
         }
 
 
+
+        //Methode die prüft, ob Objekte kollidieren oder nicht
         private boolean areColliding(SpaceObject obj1, SpaceObject obj2) {
             float obj1X = obj1.getX();
             float obj1Z = obj1.getZ();

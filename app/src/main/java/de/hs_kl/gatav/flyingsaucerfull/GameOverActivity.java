@@ -36,10 +36,12 @@ public class GameOverActivity extends Activity {
         String scoreOut = i.getStringExtra("SCORE");
 
         int score = Integer.parseInt(scoreOut);
-        Log.d("HSKL", score +"");
+        //Log.d("HSKL", score +"");
+
+        //Score in Datenbank schreiben
         db.insertScore(score);
 
-
+        //TextView für Score
         TextView scoreText = (TextView)findViewById(R.id.score);
         scoreText.setText(scoreOut);
         mWindowManager = (WindowManager)getSystemService(WINDOW_SERVICE);
@@ -49,6 +51,8 @@ public class GameOverActivity extends Activity {
         spaceGLSurfaceView = new SpaceGLSurfaceView(this);
         spaceGLSurfaceView.context=this;
 
+
+        //Button für ein neues Spiel zu starten
         final Button buttonNew = findViewById(R.id.neustart);
         buttonNew.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

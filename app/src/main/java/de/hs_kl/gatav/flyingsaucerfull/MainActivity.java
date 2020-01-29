@@ -29,11 +29,15 @@ public class MainActivity extends Activity {
     HighScoreManager db;
     ListView listView;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        //Initialisiere Datenbank und weise ListView zu
         db = new HighScoreManager(this);
         listView = (ListView) findViewById(R.id.highscores);
 
@@ -42,8 +46,6 @@ public class MainActivity extends Activity {
         int itemRes = android.R.layout.simple_list_item_1;
         List<String> data = new ArrayList<>();
         Cursor cursor = db.selectAllScores();
-        //Log.d("HSKL", DatabaseUtils.dumpCursorToString(cursor));
-
 
         if ( cursor != null){
             do{
@@ -65,6 +67,8 @@ public class MainActivity extends Activity {
         spaceGLSurfaceView = new SpaceGLSurfaceView(this);
         spaceGLSurfaceView.context=this;
 
+
+        //Button um das Spiel zu starten
         final Button buttonStart = findViewById(R.id.button_start);
         buttonStart.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
